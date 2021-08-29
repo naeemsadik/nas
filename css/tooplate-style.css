@@ -275,6 +275,7 @@ b, strong {
   font-size: 30px;
   font-weight: 300;
   font-style: normal;
+  color: #0c0c0d;
 }
 .color-mode-icon.active:after {
   font-family: 'unicons';
