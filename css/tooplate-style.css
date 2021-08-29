@@ -476,10 +476,6 @@ b, strong {
     padding-bottom: 4rem;
   }
 
-  .color-mode {
-    display: none;
-  }
-
   .about-image {
     margin-top: 4em;
   }
@@ -507,6 +503,12 @@ b, strong {
   }
 
   .navbar-collapse {
+    background: #fff;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .dark-mode .navbar-collapse {
     background: #222;
     text-align: center;
     padding-bottom: 20px;
