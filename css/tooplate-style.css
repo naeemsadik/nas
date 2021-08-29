@@ -292,6 +292,12 @@ b, strong {
 .dark-mode .navbar-light .navbar-nav .nav-link:hover {
   color: #ffc200;
 }
+.dark-mode .navbar-toggler{
+  color: rgba(255, 255, 255, 0.8);
+}
+.dark-mode .navbar-toggler {
+  color: #ffc200;
+}
 .dark-mode .navbar[class*="headroom--not-top"] {
   background: #0c0c0d;
   border-bottom: 1px solid #1f1f1f;
