@@ -20,11 +20,38 @@
 
 <body>
 
+  <script>
+    function getcookie(cname) {
+      var name = cname + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1);
+        if (c.indexOf(name) == 0)
+          return c.substring(name.length, c.length);
+      }
+      return "";
+    }
+  </script>
+
+  <script>
+    const siteMode = getcookie('myMode');
+    function setCookie() {
+      if (siteMode == "0") {
+        document.cookie = "myMode = 1";
+      } else if (siteMode == "1") {
+        document.cookie = "myMode = 0";
+      } else {
+        const siteMode = "1";
+        document.cookie = "myMode = 0";
+      }
+    }
+  </script>
   <!-- MENU -->
   <nav class="navbar navbar-expand-sm navbar-light">
     <div class="container">
       <a class="navbar-brand" href="index.html"><i class='uil uil-user'></i> Naeem</a>
-      
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -48,12 +75,14 @@
           </li>
         </ul>
 
-        <ul class="navbar-nav ml-auto">
-          <div class="ml-lg-4">
-            <div class="color-mode d-lg-flex justify-content-center align-items-center" onclick='setCookie()'>
-              <i class="color-mode-icon"></i>
-              Color mode
-            </div>
+        <ul class="navbar-nav ml-lg-auto">
+          <div class="night-mode-button">
+            <input type="checkbox" class="checkbox" id="night-mode">
+            <label for="night-mode" class="label" onclick="setCookie()">
+              <i class="uil uil-moon"></i>
+              <i style="color: yellow;" class="uil uil-sun"></i>
+              <div id="blob" class="blob"></div>
+            </label>
           </div>
         </ul>
       </div>
@@ -68,7 +97,7 @@
           <div class="about-text">
             <small class="small-text">Welcome to <span class="mobile-block">my portfolio website!</span></small>
             <h1 class="animated animated-text">
-              <span class="mr-2">Hey folks, I'm</span>
+              <span id="ok" class="mr-2">Hey folks, I'm</span>
               <div class="animated-info col-12">
                 <span class="animated-item">Naeem Abdullah Sadik</span>
                 <span class="animated-item">Web Developer</span>
@@ -329,38 +358,19 @@
   <script src="js/smoothscroll.js"></script>
   <script src="js/custom.js"></script>
 
-  <script>
-    function getcookie(cname) {
-      var name = cname + "=";
-      var ca = document.cookie.split(';');
-      for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1);
-        if (c.indexOf(name) == 0)
-          return c.substring(name.length, c.length);
-      }
-      return "";
-    }
-  </script>
-
-  <script>
-    const siteMode = getcookie('myMode');
-    function setCookie() {
-      if (siteMode == "0") {
-        document.cookie = "myMode = 1";
-      } else if (siteMode == "1") {
-        document.cookie = "myMode = 0";
-      } else {
-        const siteMode = "1";
-        document.cookie = "myMode = 0";
-      }
-    }
+  <script type="text/javascript">
+    document.querySelector('.checkbox').addEventListener('change', () => {
+      document.querySelectorAll('body').forEach(ele => {
+        ele.classList.toggle('dark-mode');
+      })
+    });
     if (siteMode == "0") {
       document.body.className = "dark-mode"
+      document.getElementById('blob').style.right = '50%';
+    } else {
+      document.getElementById('blob').style.left = '50%';
     }
   </script>
-
-
 </body>
 
 </html>
